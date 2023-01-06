@@ -1,0 +1,5 @@
+// To remove console.log from dist
+//install this dependency first npm install babel-plugin-transform-remove-console --save-dev then make a file .babelrc and write below code
+{
+    "plugins": [ ["transform-remove-console", { "exclude": [ "error", "warn"] }] ]
+  }

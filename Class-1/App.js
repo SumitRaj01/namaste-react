@@ -16,7 +16,7 @@
 *manages port number
 *Consistent hashing Algorithm
 *Zero Config: you dont need a lot of configuration
-*
+*Tree Shaking: Removing un-wanted code
 *
 *
 *Tranisitive dependency: We have our package manager which handles and takes care of our transitive dependency of our code
@@ -30,6 +30,7 @@ const heading = React.createElement(
     "h1",
     {
       id: "title",
+      key:"h1"
     },
     "Raj"
   );
@@ -37,6 +38,7 @@ const heading = React.createElement(
     "h2",
     {
       id: "title",
+      key:"h2"
     },
     "Software Developer"
   );

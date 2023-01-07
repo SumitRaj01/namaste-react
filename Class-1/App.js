@@ -16,7 +16,7 @@
 *manages port number
 *Consistent hashing Algorithm
 *Zero Config: you dont need a lot of configuration
-*
+*Tree Shaking: Removing un-wanted code
 *
 *
 *Tranisitive dependency: We have our package manager which handles and takes care of our transitive dependency of our code
@@ -26,32 +26,61 @@
 
 import React from "react";
 import ReactDOM  from "react-dom/client";
-const heading = React.createElement(
-    "h1",
-    {
-      id: "title",
-    },
-    "Raj"
+
+// const heading = React.createElement(
+//     "h1",
+//     {
+//       id: "title",
+//       key:"h1"
+//     },
+//     "Raj"
+//   );
+//React.createElement =>Object=>HTML(DOM)
+
+  // console.log(heading);
+  // const heading = React.createElement(
+  //   "h1",
+  //   {
+  //     id: "title",
+  //     key:"h2"
+  //   },
+  //   "Namaste React"
+  // );
+
+  //JSX =>React.createElement =>Object=>HTML(DOM)
+  const Title =()=> (
+  <h1 id="title" key="h2">
+  Namaste React
+  </h1>
   );
-  const heading2 = React.createElement(
-    "h2",
-    {
-      id: "title",
-    },
-    "Software Developer"
-  );
-  const container = React.createElement(
-    "div",
-    {
-      id: "container",
-    },
-    //this is an array
-    [heading, heading2]
-  );
-  console.log(heading);
+  
+  // <div class="header">
+  //     <h1>Namaste React</h1>
+  //     <ul>
+  //       <li>About Us</li>
+  //       <li>Support</li>
+  //       <li>Home</li>
+  //     </ul>
+  //   </div>
+ 
+  //React Component
+// - Functional-NEW
+// - Class- Old
+//Name of componenent starts with capital letter=It's not mandatory
+
+const HeaderComponent=()=>{
+  return(
+    <div>
+    <Title/>
+    <h1>Namaste React functional component</h1>
+    <h2>This is a h2 tag</h2>
+    </div>
+  )
+}
+  
 
   const root = ReactDOM.createRoot(document.getElementById("root"));
 
   //passing a react element inside the root
   
-  root.render(container);
+  root.render(<HeaderComponent/>);

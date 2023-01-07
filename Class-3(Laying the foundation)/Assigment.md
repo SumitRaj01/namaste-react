@@ -1,14 +1,17 @@
-1. What is JSX?
+1.
+ What is JSX?
 JSX is a syntex extension created by Facebook. It stands for JavaScript XML. JSX allows us to write HTML in React. JSX makes it easier to write and add HTML in React.
 
-2. Superpowers of JSX.
+2.
+ Superpowers of JSX.
 Easy to maintain
 Secure
 Easy to debug
 function greeting(user) {
     return <h1>{user}, How are you!!!</h1>;
 }
-3. Role of type attribute in script tag? What options can I use there?
+3.
+ Role of type attribute in script tag? What options can I use there?
 The type attribute in the script tag defines the type of script that we we want to run inside our app. type attribute can be of the following types:
 
 text/javascript : It is the basic standard of writing javascript code inside the <script> tag.
@@ -27,7 +30,8 @@ text/babel : This value indicates that the script is a babel type and required b
 
 text/typescript: As the name suggest the script is written in TypeScript.
 
-4. {TitleComponent} vs {<TitleComponent/>} vs {<TitleComponent></TitleComponent>} in JSX.
+4.
+ {TitleComponent} vs {<TitleComponent/>} vs {<TitleComponent></TitleComponent>} in JSX.
 {TitleComponent}: This value describes the TitleComponent as a javascript expession or a variable or an element. The {} can embed a javascript expression or a values inside it.
 
 <TitleComponent/> : This value represents a Component that is basically returning Some JSX value. In simple terms TitleComponent a function that is returning a JSX value. A compoenet is written inside the {<  />} expression.

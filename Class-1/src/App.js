@@ -26,6 +26,9 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Header from "./components/Header.js"
+import Body from './components/Body.js'
+import Footer from "./components/Footer.js";
 
 // const heading = React.createElement(
 //     "h1",
@@ -49,13 +52,7 @@ import ReactDOM from "react-dom/client";
 
 //JSX =>React.createElement =>Object=>HTML(DOM)
 
-const Title = () => (
 
-  <a href="/">
-    <img className="logo" src="https://yt3.ggpht.com/ytc/AMLnZu_EC-ECXAxRAixWGEfMsE1rdSoetBHyxmLNdtCB=s900-c-k-c0x00ffffff-no-rj" alt="logo" />
-  </a>
-
-);
 
 // <div class="header">
 //     <h1>Namaste React</h1>
@@ -72,22 +69,7 @@ const Title = () => (
 //Name of componenent starts with capital letter=It's not mandatory
 
 //Composing Components
-const Header = () => {
-  return (
-    <div className="header">
-      <Title />
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  )
-};
-
+ 
 //config Driven UI
 const restaurantList = [
   {
@@ -1493,50 +1475,13 @@ const restaurantList = [
     },
 ]
 
-const RestaurantCard = ({cloudinaryImageId,name,cuisines,lastMileTravelString}) => {
-  // console.log(props);
-  // const {cloudinaryImageId,name,cuisines,lastMileTravelString}=restaurant.data
-  return (
-    <div className="card">
-      <img src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"
-      +cloudinaryImageId} />
-      <h2>{name}</h2>
-      <h3>{cuisines.join(", ")}</h3>
-      <h4>{lastMileTravelString} minutes</h4>
-    </div>
-  )
-}
+
 
 //props-properties
 //no key<<<<<<<<<<index key(use only if you dont have anything)<<<<<<unique key(best practice)
-const Body = () => {
-  return (
-    <div className="restaurant-list">
-    {
-      restaurantList.map(restaurant=>{
-        return <RestaurantCard {...restaurant.data} key={restaurant.data.id}/>
-      })
-    }
-      {/* <RestaurantCard {...restaurantList[0].data} />
-      <RestaurantCard {...restaurantList[1].data} />
-      <RestaurantCard {...restaurantList[2].data} />
-      <RestaurantCard {...restaurantList[3].data} />
-      <RestaurantCard {...restaurantList[4].data} />
-      <RestaurantCard {...restaurantList[5].data} />
-      <RestaurantCard {...restaurantList[6].data} />
-      <RestaurantCard {...restaurantList[8].data} />
-      <RestaurantCard {...restaurantList[9].data} />
-      <RestaurantCard {...restaurantList[10].data} /> */}
-      
-    </div>
-  )
-}
 
-const Footer = () => {
-  return (
-    <h4>Footer</h4>
-  )
-}
+
+
 
 const AppLayout = () => {
   return (

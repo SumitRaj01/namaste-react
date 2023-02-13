@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { restaurantList } from "../contants";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-
+import { Link } from "react-router-dom";
 //What is state?
 //What is React Hooks? -Functions
 //What is useState?
@@ -31,7 +31,7 @@ const Body = () => {
     async function getRestaurants(){
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&page_type=DESKTOP_WEB_LISTING");
         const json=await data.json();
-        console.log(json);
+        // console.log(json);
         setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards)
         setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards)
     }
@@ -45,7 +45,7 @@ const Body = () => {
     //not render component (Early return)
     if(!allRestaurants) return null;
     
-    if(filteredRestaurants?.length===0) return <h1>No Restaurant match your Filter!!</h1>
+    // if(filteredRestaurants?.length===0) return <h1>No Restaurant match your Filter!!</h1>
 
     return (allRestaurants?.length===0)?<Shimmer/>: (
         <>
@@ -69,7 +69,9 @@ const Body = () => {
             {/* You have to wtite logic for NO restaurant found here */}
                 {
                     filteredRestaurants.map(restaurant => {
-                        return <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
+                        return (
+                            <Link to={"/restaurant/"+ restaurant.data.id} key={restaurant.data.id}><RestaurantCard {...restaurant.data}  /></Link>
+                        );
                     })
                 }
                 {/* <RestaurantCard {...restaurantList[0].data} />

@@ -24,11 +24,16 @@
 
 
 
-import React from "react";
+import React, { Children } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header.js"
 import Body from './components/Body.js'
 import Footer from "./components/Footer.js";
+import About from './components/About';
+import Contact from "./components/Contact.js";
+import Error from "./components/Error.js";
+import {createBrowserRouter, RouterProvider , Outlet} from "react-router-dom";
+import RestaurantMenu from "./components/RestaturantMenu.js";
 
 // const heading = React.createElement(
 //     "h1",
@@ -1500,16 +1505,45 @@ const AppLayout = () => {
     //jsx - one paren
     <React.Fragment>
       <Header />
-      <Body />
+      {/* <About/> //if path is /about
+      <Body /> //if path is /
+      <Contact/> // if path is /contact */}
+      {/* {outlet} */}
+      <Outlet/>
       <Footer />
     </React.Fragment>
-
   )
 }
+
+const appRouter=createBrowserRouter([
+  {
+    path:"/",
+    element:<AppLayout/>,
+    errorElement:<Error/>,
+    children:[
+      {
+        path:"/",
+        element:<Body/>,
+      },
+      {
+        path:"/about",
+        element:<About/>,
+      },
+      {
+        path:"/contact",
+        element:<Contact/>,
+      },
+      {
+        path:"/restaurant/:resId",
+        element:<RestaurantMenu/>,
+      },
+    ],
+  },
+]);
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 //passing a react element inside the root
 
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter}/>);

@@ -34,6 +34,7 @@ import Contact from "./components/Contact.js";
 import Error from "./components/Error.js";
 import {createBrowserRouter, RouterProvider , Outlet} from "react-router-dom";
 import RestaurantMenu from "./components/RestaturantMenu.js";
+import Profile from "./components/Profile.js";
 
 // const heading = React.createElement(
 //     "h1",
@@ -1526,8 +1527,12 @@ const appRouter=createBrowserRouter([
         element:<Body/>,
       },
       {
-        path:"/about",
+        path:"/about", //parentPath/{path} => localhost:1234/about/about
         element:<About/>,
+        children:[{
+          path:"profile", // parentPath/{path} => localhost:1234/about/profile
+          element: <Profile/>
+        }]
       },
       {
         path:"/contact",

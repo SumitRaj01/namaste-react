@@ -1,4 +1,18 @@
-#container{
+/* Noraml Native Css */
+/* SCSS */
+/* inline CSS */
+/* Component Libraries - Material UI, Base UI , Ant UI , Chakra */
+/* Styled Components */
+
+
+/* Tailwind CSS Framework
+    -CSS on the go
+    -reusability
+    -less bundle size
+    -Flexible UI(Customizations)
+*/
+  
+/* #container{
     background-color:rgb(209, 216, 206);    
 }
 
@@ -42,4 +56,8 @@ display: flex;
 }
 .menu{
     display: flex;
-}
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

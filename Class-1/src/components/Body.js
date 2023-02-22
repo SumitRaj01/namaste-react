@@ -5,6 +5,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline"
+
 //What is state?
 //What is React Hooks? -Functions
 //What is useState?
@@ -51,25 +52,37 @@ const Body = () => {
     
     // if(filteredRestaurants?.length===0) return <h1>No Restaurant match your Filter!!</h1>
 
+
+
     return (allRestaurants?.length===0)?<Shimmer/>: (
         <>
-            <div className="search-container">
-                <input type="text" className="search-input" placeholder="Search" value={searchText}
-                    onChange={(e) => {
+            <div 
+            className="search-container p-5 bg-pink-50 my-5">
+                <input type="text" 
+                // className="search-input"
+                className="focus:bg-red-100 p-2 m-2" 
+                placeholder="Search" 
+                value={searchText}
+                onChange={(e) => {
                         // e.target.value => whatever you write in input
                         setSearchText(e.target.value);
-                    }}
+                                }}
                 />
-                <button className="search-btn" onClick={() => {
-
-                    //need to filter the data
-                    const data=filterData(searchText,allRestaurants);
-                    //update the state-restaurants
-                    setFilteredRestaurants(data);
+                <button 
+                className="p-2 m-2 bg-purple-600 hover:bg-red-700 text-white rounded-md" //for tailwind suggestion use control + spacebar
+                // className="search-btn"
+                onClick={() => {
+                //need to filter the data
+                const data=filterData(searchText,allRestaurants);
+                //update the state-restaurants
+                setFilteredRestaurants(data);
                 }
                 }>Search</button>
             </div>
-            <div className="restaurant-list">
+            <div 
+            // className="restaurant-list"
+            className="flex flex-wrap"
+            >
             {/* You have to wtite logic for NO restaurant found here */}
                 {
                     filteredRestaurants.map(restaurant => {

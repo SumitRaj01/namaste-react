@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { restaurantList } from "../contants";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline"
-
+import UserContext from "../utils/UserContext";
 //What is state?
 //What is React Hooks? -Functions
 //What is useState?
@@ -17,7 +17,7 @@ const Body = () => {
     const  [allRestaurants,setAllRestaurants]=useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");	//To create state variable, returns=[variable name, function to update the variable]
-
+    const {user,setUser}=useContext(UserContext);
 
     //empty dependency array=>once after render
     // dep array [searchText]=>once after initial render+everytime after rerender when my search text changes
@@ -78,6 +78,18 @@ const Body = () => {
                 setFilteredRestaurants(data);
                 }
                 }>Search</button>
+                <input value={user.name} onChange={
+                    e=>setUser({
+                        ...user,
+                        name:e.target.value
+                    })
+                } />
+                <input value={user.email} onChange={
+                    e=>setUser({
+                        ...user,
+                        email:e.target.value
+                    })
+                } />
             </div>
             <div 
             // className="restaurant-list"
@@ -87,7 +99,9 @@ const Body = () => {
                 {
                     filteredRestaurants.map(restaurant => {
                         return (
-                            <Link to={"/restaurant/"+ restaurant.data.id} key={restaurant.data.id}><RestaurantCard {...restaurant.data}  /></Link>
+                            <Link to={"/restaurant/"+ restaurant.data.id} key={restaurant.data.id}>
+                            <RestaurantCard {...restaurant.data}   />
+                            </Link>
                         );
                     })
                 }

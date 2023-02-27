@@ -20,6 +20,8 @@
 - [Akshay Saini Code Link](https://bitbucket.org/namastedev/namaste-react-live/src/master/)
 
 
+## Theory Assignment: `Chapter-10 Jo dikhta hai vo bikta hai` (28/01/2023)
+
 ### 1. Explore all the ways of writing css.
 
 1. Native CSS - all components's styles in a single file index.css

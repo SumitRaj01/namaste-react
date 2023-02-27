@@ -28,7 +28,7 @@
 
 
 
-import React, { Children,lazy, Suspense }  from "react";
+import React, { Children,lazy, Suspense, useState }  from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header.js"
 import Body from './components/Body.js'
@@ -40,6 +40,7 @@ import {createBrowserRouter, RouterProvider , Outlet} from "react-router-dom";
 import RestaurantMenu from "./components/RestaturantMenu.js";
 import Profile from "./components/Profile.js";
 import Shimmer from "./components/Shimmer.js";
+import UserContext from "./utils/UserContext.js";
 // import Instamart from "./components/Instamart.js";
 const Instamart=lazy(()=>import("./components/Instamart"));
 const About=lazy(()=>import("./components/About"))
@@ -1498,6 +1499,13 @@ const About=lazy(()=>import("./components/About"))
 
 
 const AppLayout = () => {
+  const [user,setUser]=useState({
+    name:"Namaste React",
+    email:"support@namastedev.com",
+  });
+
+
+
   return (
 
     /**
@@ -1512,7 +1520,13 @@ const AppLayout = () => {
 
     //React.Fragment
     //jsx - one paren
-    <React.Fragment>
+    // <React.Fragment>
+    <UserContext.Provider 
+      value={{
+      user:user,
+      setUser:setUser,
+    }}
+    >
       <Header />
       {/* <About/> //if path is /about
       <Body /> //if path is /
@@ -1520,8 +1534,9 @@ const AppLayout = () => {
       {/* {outlet} */}
       <Outlet/>
       <Footer />
-    </React.Fragment>
-  )
+    {/* // </React.Fragment> */}
+    </UserContext.Provider>
+  );
 }
 
 const appRouter=createBrowserRouter([
@@ -1532,7 +1547,7 @@ const appRouter=createBrowserRouter([
     children:[
       {
         path:"/",
-        element:<Body/>,
+        element:<Body />,
       },
       {
         path:"/about", //parentPath/{path} => localhost:1234/about/about
@@ -1573,3 +1588,17 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 //passing a react element inside the root
 
 root.render(<RouterProvider router={appRouter}/>);
+
+/**
+ * AppLayout
+ *   (state=user)
+ *      -<Body user={user}/>
+ *         -RestaurantContainer user=>
+ *           -RestaurantCard user={user}
+ *             -<h4>{user}</h4>    
+ * 
+ * PROPS DRILLING 
+ */
+
+
+ 

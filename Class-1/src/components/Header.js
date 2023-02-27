@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Logo from '../assets/img/foodvilla.png';
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 const loggedInUser=()=>{
   //API call to check authentication
   return false;
@@ -26,10 +27,13 @@ const Title = () => (
     
     const isOnline=useOnline();
 
+    const {user}=useContext(UserContext);
+
     return (
       <div 
       // className="header"
-      className="flex justify-between bg-pink-50 shadow-lg sm:bg-blue-50 "
+      className="flex justify-between bg-pink-50 shadow-lg" 
+      // sm:bg-blue-50
       >
         <Title />
         <div className="nav-items">
@@ -54,6 +58,7 @@ const Title = () => (
           </ul>
         </div>
         <h1>{isOnline?'✔':'🛑'}</h1>
+        <span className="p-10 font-bold text-red-900" >{user.name}</span> 
         {
           isLoggedIn?(<button onClick={()=>setIsLoggedIn
           (false)}>Logout</button>):(<button onClick={()=>setIsLoggedIn
